@@ -33,6 +33,7 @@ require_once plugin_dir_path( __FILE__ ) . 'includes/class-mmg-dependency-checke
 require_once plugin_dir_path( __FILE__ ) . 'includes/class-mmg-checkout-payment-activator.php';
 require_once plugin_dir_path( __FILE__ ) . 'includes/class-mmg-checkout-payment-deactivator.php';
 require_once plugin_dir_path( __FILE__ ) . 'includes/class-mmg-checkout-payment-deactivator.php';
+require_once plugin_dir_path( __FILE__ ) . 'includes/class-mmg-checkout-payment-rewrites.php';
 // This is temporary until the plugin is uploaded to the WordPress repository.
 use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
 
@@ -42,6 +43,8 @@ $update_checker = PucFactory::buildUpdateChecker(
 	'mmg-checkout-payment'
 );
 $update_checker->getVcsApi()->enableReleaseAssets();
+
+MMG_Checkout_Payment_Rewrites::init();
 
 if ( MMG_Dependency_Checker::check_dependencies() ) {
 	/**
